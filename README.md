@@ -4,6 +4,8 @@ Benchmarks int8 quantization strategies on the KV cache of Qwen2.5-0.5B (fp16), 
 
 Motivated by DeepSeek's mixed-precision KV cache work — exploring whether the same insight applies to an earlier open model.
 
+![plot](kv_quant_wikitext.png)
+
 ### Build & run
 ```
 make
