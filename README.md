@@ -4,6 +4,8 @@ Benchmarks int8 quantization strategies on the KV cache of Qwen2.5-0.5B (fp16), 
 
 Motivated by DeepSeek's mixed-precision KV cache work — exploring whether the same insight applies to an earlier open model.
 
+**The cast bug.** `(int8_t) x` vs `(int8_t) nearbyintf(x)` — the first syntax costs ~4x MSE. Nearly universal in C/C++ quant code.
+
 ![plot](kv_quant_wikitext.png)
 
 ### Build & run
@@ -21,8 +23,6 @@ Corpora: `wikitext` (wikitext-2-raw-v1 test), `c4` (allenai/c4 en validation)
 - **strat3** — mixed: fp16 for outlier K heads, int8 elsewhere
 
 ### Key findings
-
-**The cast bug.** `(int8_t) x` vs `(int8_t) nearbyintf(x)` — the first syntax costs ~4x MSE. Nearly universal in C/C++ quant code.
 
 **V is ~50x more compressible than K.** Values quantize cleanly across all layers. Keys are noisier, especially at early layers.
 
