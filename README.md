@@ -1,4 +1,4 @@
-## kvmix — KV cache int8 quantization benchmark
+## kvmix — KV cache mix precision quant benchmark
 
 Benchmarks int8 quantization strategies on the KV cache of Qwen2.5-0.5B (fp16), using post-RoPE K and V tensors across 24 layers, 2 GQA heads, 4096 tokens.
 
